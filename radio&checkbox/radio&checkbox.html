@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin: 0;padding:0;}
+		.wrap{line-height: 20px;}
+		label,label{display: inline-block;width: 20px;height: 20px;background: url(img/radio.png) -22px -8px no-repeat;vertical-align: middle;}
+		input{display: none;}
+		label.checkbox{background-position: -22px -30px;}
+		input:checked+label.radio{background-position: -57px -8px;}
+		input:checked+label.checkbox{background-position: -57px -30px;}
+	</style>
+</head>
+<body>
+	<h1>自定义radio和checkbox样式</h1>
+	<section>
+		<h4>radio</h4>
+		<div class="wrap">
+			<input type="radio" id="radio" name="sex"><label for="radio" class="radio"></label>男
+		</div>
+		<div class="wrap">
+			<input type="radio" id="radio2" name="sex"><label for="radio2" class="radio"></label>女
+		</div>
+		<h4>checkbox</h4>
+		<div class="wrap">
+			<input type="checkbox" id="checkbox1" name="sports"><label for="checkbox1" class="checkbox"></label>足球
+		</div>
+		<div class="wrap">
+			<input type="checkbox" id="checkbox2" name="sports"><label for="checkbox2" class="checkbox"></label>篮球
+		</div>
+	</section>
+</body>
+</html>
