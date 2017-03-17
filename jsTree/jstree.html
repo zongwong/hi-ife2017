@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.on{color: red;}
+		.parent{cursor: pointer;}
+	</style>
+</head>
+<body>
+	<ul class="app"></ul>
+	<script>
+		var nodes = [
+			{name: "父节点1", 
+			children:[ 
+				{name: "子节点1"}, 
+				{name: "子节点2"},
+				{name: "子节点"}
+				]
+			}, 
+
+			{name: "父节点2", 
+			children: [ 
+				{name: "子节点3"}, 
+				{
+					name: "子节点4",
+					children:[
+						{name:"子节点5"},{name:"子节点5"},{name:"子节点5"}]}
+				]
+			} 
+
+		];
+		function tree(nodes,parent){
+
+				nodes.forEach(function(item){
+					
+
+					if(item.children){ 
+						
+						var ul=document.createElement('ul');
+						var li=document.createElement('li');
+						li.innerHTML=item.name;
+						li.classList.add('parent');
+						li.appendChild(ul);
+						parent.appendChild(li);
+						tree(item.children,ul);
+					 	
+					}else{
+
+						var li=document.createElement('li');
+						li.innerHTML=item.name;
+						parent.appendChild(li);
+					}
+
+				})
+			
+		}
+		var app=document.querySelector('.app');
+		tree(nodes,app)
+		
+
+		var parent=app.querySelectorAll('.parent');
+		for (var i = 0; i < parent.length; i++) {
+			parent[i].addEventListener('click',function(e){
+				 e.stopPropagation();
+				 if (e.target==this) {
+				 	var uls=this.getElementsByTagName('ul')[0];
+				 	if (uls.style.display=='none') {
+				 		uls.style.display='block';
+				 		this.classList.remove('on');
+				 	}else{
+				 		uls.style.display='none';
+				 		this.classList.add('on');
+				 	}
+				 	
+				 }
+
+			},false)
+		}
+	</script>
+</body>
+</html>
